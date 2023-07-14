@@ -1,7 +1,7 @@
 pipeline {
   agent {
         node{
-                label "Frontend"
+                label "primesquare-local"
 }
 }
   tools {
@@ -18,11 +18,9 @@ nodejs "Nodejs"
 
     stage('Build') {
       steps {
-                node('Nodejs'){
                 sh 'npm install'
          sh 'npm build'
                 }
-			}
-		}
+	    }
 	}
 }
