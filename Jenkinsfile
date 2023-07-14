@@ -18,11 +18,11 @@ nodejs "node"
 
     stage('Build') {
       steps {
-		node('Node.js 14'){
-		sh 'npm install'
+                node('Node.js 14'){
+                sh 'npm install'
          sh 'npm build'
-		} 
-      }
-    }
-
-
+                }
+			}
+		}
+	}
+}
