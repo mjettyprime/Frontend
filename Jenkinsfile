@@ -18,8 +18,7 @@ nodejs "Nodejs"
 
     stage('Build') {
       steps {
-                sh 'npm cache clean'
-		sh 'npm install'
+                sh 'npm install'
                 sh 'npm run build'
                 }
 	    }
