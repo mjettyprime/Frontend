@@ -18,7 +18,7 @@ nodejs "Nodejs"
 
     stage('Build') {
       steps {
-                node('Node.js 14'){
+                node('Nodejs'){
                 sh 'npm install'
          sh 'npm build'
                 }
