@@ -27,7 +27,7 @@ pipeline {
                         id: 'sudo-password',
                         message: 'Enter sudo password:',
                         parameters: [
-                            [$class: 'PasswordParameterDefinition', defaultValue: '', description: 'Sudo password', name: 'SUDO_PASSWORD']
+                            [$class: 'PasswordParameterDefinition', description: 'Sudo password', name: 'SUDO_PASSWORD']
                         ]
                     ).toString()
 
