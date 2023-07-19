@@ -26,8 +26,8 @@ pipeline {
         stage('Sonar') {
             steps {
                 script {
-                    withSonarQubeEnv(credentialsId: 'sonar') {
-                        sh "/opt/SonarQube-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
+                    withSonarQubeEnv(redentialsId: 'sonar') {
+                        sh "/opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
                     }
                 }
             }
