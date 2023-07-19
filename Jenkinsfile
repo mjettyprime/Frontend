@@ -34,7 +34,7 @@ pipeline {
                     ).toString()
 
                     sh '''
-                        echo "$sudoPassword" | sudo -S /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2
+                        echo "$sudoPassword" 
                     '''
                 }
             }
