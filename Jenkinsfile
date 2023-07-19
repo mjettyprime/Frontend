@@ -31,7 +31,9 @@ pipeline {
                         parameters: [
                             [$class: 'PasswordParameterDefinition', defaultValue: '', description: 'Sudo password', name: 'SUDO_PASSWORD']
                         ]
-                    ).toString()
+                    ) {
+                        sudoPassword = env.SUDO_PASSWORD
+                    }
 
                     sh 'echo "$sudoPassword"'
                 }
