@@ -33,9 +33,7 @@ pipeline {
                         ]
                     ).toString()
 
-                    sh '''
-                        echo "$sudoPassword" 
-                    '''
+                    sh 'echo "$sudoPassword"'
                 }
             }
 		}
