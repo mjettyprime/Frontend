@@ -8,35 +8,41 @@ pipeline {
     tools {
         nodejs "Nodejs"
     }
-    
     stages {
+//        stage('Git') {
+//            steps {
+//                git 'https://github.com/****/****'
+//            }
+//        }
         stage('Build') {
             steps {
                 sh 'npm install'
                 sh 'npm run build'
             }
         }
-        
-        stage('Credentials') {
-            steps {
+	stage('crediantials'){
+	    steps {
                 script {
                     def sudoPassword = input(
                         id: 'sudo-password',
                         message: 'Enter sudo password:',
                         parameters: [
-                            password(name: 'SUDO_PASSWORD', defaultValue: '', description: 'Sudo password')
+                            [$class: 'PasswordParameterDefinition', defaultValue: '', description: 'Sudo password', name: 'SUDO_PASSWORD']
                         ]
-                    )
-                    sh "echo '$sudoPassword'"
+                    ).toString()
+
+                    sh '''
+                        echo "$sudoPassword" | sudo -S /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2
+                        echo "$sudoPassword" 
+                    '''
                 }
             }
-        }
-        
+		}
         stage('Sonar') {
             steps {
-                withSonarQubeEnv(credentialsId: 'sonar') {
-                    script {
-                        sh "sudo -S ${env.SUDO_PASSWORD} /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
+                script {
+                    withSonarQubeEnv(redentialsId: 'sonar') {
+                        sh "sudo -S ${SUDO_PASSWORD} /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
                     }
                 }
             }
