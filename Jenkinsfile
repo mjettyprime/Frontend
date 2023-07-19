@@ -40,8 +40,8 @@ pipeline {
         stage('Sonar') {
             steps {
                 script {
-                    withSonarQubeEnv(redentialsId: 'sonar') {
-                        sh "sudo -S ${SUDO_PASSWORD} /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
+                    withSonarQubeEnv(credentialsId: 'sonar') {
+                        sh "sudo -S /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
                     }
                 }
             }
