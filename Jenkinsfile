@@ -22,13 +22,13 @@ pipeline {
                 sh 'npm run build'
             }
         }
-	stage('credintials') {
-            steps {
-                withCredentials([sudoPassword(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
-               	echo "$SUDO_PASSWORD"
-                }
-            }
-        }
+//	stage('credintials') {
+//            steps {
+//                withCredentials([sudoPassword(credentialsId: 'sudo-password', variable: 'SUDO_PASSWORD')]) {
+//               	echo "$SUDO_PASSWORD"
+//                }
+//            }
+//        }
 
         stage('Sonar') {
             steps {
