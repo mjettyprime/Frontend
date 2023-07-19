@@ -23,22 +23,26 @@ pipeline {
             }
         }
 	stage('crediantials'){
-	    steps {
+		steps {
                 script {
-                    def sudoPassword = input(
+                    def sudoPassword
+                    
+                    input(
                         id: 'sudo-password',
                         message: 'Enter sudo password:',
                         parameters: [
-                            [$class: 'PasswordParameterDefinition', defaultValue: '', description: 'Sudo password', name: 'SUDO_PASSWORD']
+                            password(name: 'SUDO_PASSWORD', defaultValue: '', description: 'Sudo password')
                         ]
-                    ) {
-                        sudoPassword = env.SUDO_PASSWORD
-                    }
+                    ) <<< 'sudoPassword = SUDO_PASSWORD'
 
-                    sh 'echo "$sudoPassword"'
+                    sh '''
+                        echo "${sudoPassword}" | sudo -S /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2
+                    '''
                 }
             }
-		}
+        }
+    }
+}
         stage('Sonar') {
             steps {
                 script {
