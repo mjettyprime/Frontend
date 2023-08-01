@@ -21,21 +21,21 @@ pipeline {
                 sh 'npm run build'
             }
         }
-	stage('crediantials'){
-	    steps {
-                script {
-                    def sudoPassword = input(
-                        id: 'sudo-password',
-                        message: 'Enter sudo password:',
-                        parameters: [
-                            [$class: 'PasswordParameterDefinition', description: 'Sudo password', name: 'SUDO_PASSWORD']
-                        ]
-                    ).toString()
+	// stage('crediantials'){
+	//     steps {
+ //                script {
+ //                    def sudoPassword = input(
+ //                        id: 'sudo-password',
+ //                        message: 'Enter sudo password:',
+ //                        parameters: [
+ //                            [$class: 'PasswordParameterDefinition', description: 'Sudo password', name: 'SUDO_PASSWORD']
+ //                        ]
+ //                    ).toString()
 
-                     sh 'echo "$sudoPassword"'
-                }
-            }
-		}
+ //                     sh 'echo "$sudoPassword"'
+ //                }
+ //            }
+	// 	}
 //  		stage('SonarQube Analysis') {
 //     			def scannerHome = tool 'sonar-scanner';
 //     		steps{
