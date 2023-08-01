@@ -7,7 +7,7 @@ pipeline {
     
     tools {
         nodejs "Nodejs"
-        sonarqubeScanner 'SonarScanner'
+        sonarqube hudson.plugins.sonar.SonarRunnerInstallation('SonarScanner')
     }
     stages {
 //        stage('Git') {
