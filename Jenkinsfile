@@ -7,7 +7,7 @@ pipeline {
     
     tools {
         nodejs "Nodejs"
-        sonarqubeScanner ('sonar-scanner')
+        // sonarqubeScanner ('sonar-scanner')
     }
     stages {
 //        stage('Git') {
