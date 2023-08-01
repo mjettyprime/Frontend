@@ -5,10 +5,10 @@ pipeline {
         }
     }
     
-    tools {
-        nodejs "Nodejs"
-        // sonarqubeScanner ('sonar-scanner')
-    }
+    // tools {
+    //     nodejs "Nodejs"
+    //     // sonarqubeScanner ('sonar-scanner')
+    // }
     stages {
 //        stage('Git') {
 //            steps {
