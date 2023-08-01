@@ -35,11 +35,11 @@ pipeline {
                 }
             }
 		}
-        stage('Sonar') {
-            steps {
-                script {
-withSonarQubeEnv(credentialsId: 'sonar') {
-                        sh "echo '${SUDO_PASSWORD}' | sudo -S /opt/Sonar-scanner/bin/sonar-scanner -Dsonar.projectName=test2 -Dsonar.projectKey=test2"
+ 		stage('SonarQube Analysis') {
+    			def scannerHome = tool 'SonarScanner';
+    		withSonarQubeEnv() {
+      			sh "${scannerHome}/bin/sonar-scanner"
+   			 }
                     }
                 }
             }
