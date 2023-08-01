@@ -7,7 +7,7 @@ pipeline {
     
     tools {
         nodejs "Nodejs"
-        sonarqube hudson.plugins.sonar.SonarRunnerInstallation('sonar-scanner')
+        sonarqubeScanner ('sonar-scanner')
     }
     stages {
 //        stage('Git') {
@@ -39,7 +39,7 @@ pipeline {
  		stage('SonarQube Analysis') {
     			def scannerHome = tool 'sonar-scanner';
     		steps{
-			withSonarQubeEnv() {
+			withSonarQubeEnv('sonar-scanner') {
       			sh "${scannerHome}/bin/sonar-scanner"
    			 }
 }
